@@ -61,3 +61,12 @@ pop_million
 pop_rate <- world_pop / world_pop[1]
 pop_rate
 
+pop_increase <- world_pop[-1] - world_pop[-7]
+percent_increase <- (pop_increase / world_pop[-7]) * 100
+percent_increase
+
+plot(x = seq(1960, 2010, 10), y = percent_increase)
+
+percent_increase[c(1, 2)] <- c(20, 22)
+percent_increase
+
