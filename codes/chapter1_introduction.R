@@ -115,3 +115,61 @@ my_summary(z)
 
 ### 1.3.7 data files: loading and subsetting
 
+getwd()
+#setwd("")
+
+UNpop <- read_csv("https://github.com/kosukeimai/qss/raw/master/INTRO/UNpop.csv")
+class(UNpop)
+
+## load the package
+library(qss)
+
+data(UNpop, package = "qss")
+UNpop
+#data(UNpop)
+#UNpop
+
+names(UNpop)
+nrow(UNpop)
+ncol(UNpop)
+dim(UNpop)
+
+UNpop %>% .$world.pop
+
+UNpop[, "world.pop"]
+UNpop[c(1, 2, 3), ]
+
+UNpop[1:3, "year"]
+slice(UNpop, n = 1:3)
+
+select(UNpop, world.pop)
+
+UNpop[1:3, "year"]
+
+select(slice(UNpop, 1:3), year)
+
+UNpop %>% 
+  slice(1:3) %>% 
+  select(year)
+
+UNpop %>% 
+  slice(seq(1, n(), by = 2)) %>% 
+  select(world.pop)
+
+UNpop %>% 
+  filter(row_number() %% 2 == 1) %>% 
+  select(world.pop)
+
+pop_1970 <- UNpop %>% 
+  filter(year == 1970) %>% 
+  select(world.pop) %>% 
+  pull() #return a vector, not a tibble
+
+pop_1970
+
+UNpop %>% 
+  filter(year == 1970) %>% 
+  select(world.pop) %>% 
+  as_vector()
+
+### 1.3.8 Adding Variables
