@@ -231,3 +231,25 @@ data("UNpop")
 
 write_csv(UNpop, file = "datasets/UNpop.csv")
 
+### 1.3.11 Loading Data in other Formats
+install.packages(c("foreign", "haven", "rio"))
+
+library(tidyverse)
+library(qss)
+library(foreign)
+library(haven)
+library(rio)
+
+UNpop_dta_url <- "https://github.com/kosukeimai/qss/raw/master/INTRO/UNpop.dta"
+
+UNpop <- read_dta(UNpop_dta_url)
+
+UNpop_csv_url <- 
+  "https://github.com/kosukeimai/qss/raw/master/INTRO/UNpop.csv"
+
+UNpop <- import(UNpop_csv_url)
+UNpop
+UNpop_RData_url <- 
+  "https://github.com/kosukeimai/qss/raw/master/INTRO/UNpop.RData"
+UNpop <- import(UNpop_RData_url)
+UNpop
