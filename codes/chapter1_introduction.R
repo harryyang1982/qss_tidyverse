@@ -173,3 +173,24 @@ UNpop %>%
   as_vector()
 
 ### 1.3.8 Adding Variables
+
+UNpop_mill <- UNpop %>% 
+  mutate(world_pop_mill = world.pop / 1000) %>% 
+  select(-world.pop)
+UNpop_mill
+
+## adding a nonsense variable to the UNpop.mill data
+UNpop_mill <- UNpop_mill %>% 
+  mutate(nonsense_var = world_pop_mill / year)
+UNpop_mill
+
+UNpop_mill <- UNpop_mill %>% 
+  mutate(after_1980 = case_when(year >= 1980 ~ 1, 
+                                TRUE ~ 0))
+
+specific_years <- c(1950, 1980, 2000)
+UNpop_mill <- UNpop_mill %>% 
+  mutate(year_of_interest = case_when(year %in% specific_years ~ 1, 
+                                      TRUE ~ 0))
+UNpop_mill
+
