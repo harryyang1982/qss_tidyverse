@@ -70,3 +70,48 @@ plot(x = seq(1960, 2010, 10), y = percent_increase)
 percent_increase[c(1, 2)] <- c(20, 22)
 percent_increase
 
+### 1.3.6 functions
+
+length(world_pop)
+
+min(world_pop)
+
+max(world_pop)
+
+range(world_pop)[2] - range(world_pop)[1]
+
+mean(world_pop)
+
+sum(world_pop) / length(world_pop)
+
+year <- seq(from = 1950, to = 2010, by = 10)
+year
+
+seq(to = 2010, by = 10, from = 1950)
+
+seq(from = 2010, to = 1950, by = -10)
+2008:2012
+2012:2008
+
+names(world_pop)
+names(world_pop) <- year
+
+names(world_pop)
+world_pop
+
+my_summary <- function(x) {
+  s_out <- sum(x)
+  l_out <- length(x)
+  m_out <- s_out / l_out
+  out <- c(s_out, l_out, m_out) # define the output
+  names(out) <- c("sum", "length", "mean") # add labels
+  return(out)
+}
+
+my_summary(world_pop)
+
+z <- 1:10
+my_summary(z)
+
+### 1.3.7 data files: loading and subsetting
+
