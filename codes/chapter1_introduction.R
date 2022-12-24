@@ -217,3 +217,17 @@ UNpop_mill %>%
 UNpop_mill %>% 
   group_by(after_1980) %>% 
   summarize(mean_pop = mean(world_pop_mill))
+
+### 1.3.10 Saving Objects
+save.image("datasets/chapter1.RData")
+
+save(UNpop, file = "datasets/Chapter1.RData")
+save(world_pop, year, file = "datasets/Chapter1.RData")
+
+load("datasets/Chapter1.RData")
+
+library(qss)
+data("UNpop")
+
+write_csv(UNpop, file = "datasets/UNpop.csv")
+
