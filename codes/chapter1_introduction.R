@@ -194,3 +194,26 @@ UNpop_mill <- UNpop_mill %>%
                                       TRUE ~ 0))
 UNpop_mill
 
+### 1.3.9. Data Frames: Summarizing
+
+summary(UNpop_mill)
+
+## add a row where value for each column is NA
+UNpop_mill_wNAs <- UNpop_mill %>% 
+  add_row(year = NA, world_pop_mill = NA,
+          nonsense_var = NA, after_1980 = NA,
+          year_of_interest = NA)
+UNpop_mill_wNAs
+
+## take the mean of world_pop_mill (returns NA)
+mean(UNpop_mill_wNAs$world_pop_mill)
+
+mean(UNpop_mill_wNAs$world_pop_mill, na.rm = TRUE)
+
+UNpop_mill %>% 
+  summarize(mean_pop = mean(world_pop_mill),
+            median_pop = median(world_pop_mill))
+
+UNpop_mill %>% 
+  group_by(after_1980) %>% 
+  summarize(mean_pop = mean(world_pop_mill))
